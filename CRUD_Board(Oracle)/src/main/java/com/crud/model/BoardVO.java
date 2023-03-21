@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+// LomBok 라이브러리 사용하여 getter setter ToString 자동생성 하였음 
 @Getter @Setter @ToString
 public class BoardVO {
 	
