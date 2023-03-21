@@ -8,5 +8,8 @@
     <insert id="enroll">
         insert into crud_board(title, content, writer) values (#{title}, #{content}, #{writer})
     </insert>
- 
+   
+ 	<select id="getList" resultType="com.crud.model.BoardVO">
+ 		select * from crud_board
+ 	</select>
   </mapper>
