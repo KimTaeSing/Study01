@@ -10,4 +10,6 @@ public interface BoardService {
 	public void enroll(BoardVO board);
 //  게시글 목록
 	public List<BoardVO> getList();
+//  게시글 읽기
+	public BoardVO getPage(int bno);
 }

@@ -59,9 +59,11 @@
 
 <div class="table_wrap">
 	<a href="/board/enroll" class="top_btn">게시판 등록</a>
+	<a href="/" class="top_btn">index 페이지 이동</a>
 	<table>
 		<thead>
 			<tr>
+				<th clas==checkbox_width><input type="checkbox" name="checkbox"/></th>
 				<th class="bno_width">번호</th>
 				<th class="title_width">제목</th>
 				<th class="writer_width">작성자</th>
@@ -71,11 +73,16 @@
 		</thead>
 			<c:forEach var="list" items="${list}">
 				<tr>
+					<td><input type="checkbox" name=""/></td>
 					<td><c:out value="${list.bno}"></c:out></td>
-					<td><c:out value="${list.title}"></c:out></td>
+					<td><a href='/board/viewPage?bno=<c:out value="${list.bno}"/>'>
+							<c:out value="${list.title}"></c:out>
+						</a>
+					</td>
 					<td><c:out value="${list.writer}"></c:out></td>
 					<td><c:out value="${list.regdate}"></c:out></td>
 					<td><c:out value="${list.updatedate}"></c:out></td>
+					<input type="hidden" value='<c:out value="${list.bno }"></c:out>'/>
 				</tr>
 			</c:forEach>
 	</table>
@@ -101,6 +108,8 @@ $(document).ready(function(){
 	}	
 	
 });
+
+
 </script>
 
 </body>

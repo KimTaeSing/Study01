@@ -25,6 +25,7 @@
 			<label>writer</label> <input type="text" name="writer">
 		</div>
 		<button>전송</button>
+		<a href="/">돌아가기</a>
 	</form>
 
 </body>

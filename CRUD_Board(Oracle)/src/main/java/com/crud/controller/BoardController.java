@@ -25,19 +25,33 @@ public class BoardController {
 	@Autowired
 	private BoardService bservice;
 
+	// 보기 페이지 진입 컨트롤러
 	@GetMapping("/list")
 	public void boardListGET(Model model) {
 		log.info("게시판 목록 페이지 진입");
 		model.addAttribute("list", bservice.getList());
 
 	}
+	
+	// 게시글 읽기 페이지 진입 컨트롤러
+	@GetMapping("/viewPage")
+	public void boardGetPage(Model model, int bno) {
+		log.info("게시글 읽기 컨트롤러 진입 :"+bservice.getPage(bno) );
+		model.addAttribute("getInfo", bservice.getPage(bno));
+	}
+	
+	
 
+	// 등록 페이지 진입 컨트롤러
 	@GetMapping("/enroll")
 	public void boardenrollGET(BoardVO board) {
 		log.info("게시판 등록 페이지 진입");
 
 	}
+	
+	
 
+	// 등록 컨트롤러
 	@PostMapping("/enroll")
 	public String boardEnrollPOST(BoardVO board, RedirectAttributes rttr) {
 		log.info("데이터 테스트 : " + board);

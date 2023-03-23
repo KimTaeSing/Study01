@@ -10,6 +10,10 @@
     </insert>
    
  	<select id="getList" resultType="com.crud.model.BoardVO">
- 		select * from crud_board
+ 		select * from crud_board order by bno
+ 	</select>
+ 	
+ 	<select id="getPage" resultType="com.crud.model.BoardVO">
+ 		select * from crud_board where bno=#{bno}
  	</select>
   </mapper>
