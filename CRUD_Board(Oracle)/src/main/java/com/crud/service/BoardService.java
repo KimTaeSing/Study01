@@ -12,4 +12,10 @@ public interface BoardService {
 	public List<BoardVO> getList();
 //  게시글 읽기
 	public BoardVO getPage(int bno);
+//  게시판 수정(읽기)
+	public List<BoardVO> updatePage(int bno);
+	
+//	게시글 삭제
+	public void delBoard(int bno);
+	
 }

@@ -10,10 +10,20 @@
     </insert>
    
  	<select id="getList" resultType="com.crud.model.BoardVO">
- 		select * from crud_board order by bno
+ 		select * from crud_board order by bno DESC
  	</select>
  	
  	<select id="getPage" resultType="com.crud.model.BoardVO">
  		select * from crud_board where bno=#{bno}
  	</select>
+ 	
+ 	<select id="updatePage" resultType="com.crud.model.BoardVO">
+ 		select * from crud_board where bno = #{bno}
+ 	</select>
+ 	
+ 	
+ 	<delete id="delBoard" >
+ 		delete from crud_board where bno = #{bno}
+ 	</delete>
+ 	
   </mapper>

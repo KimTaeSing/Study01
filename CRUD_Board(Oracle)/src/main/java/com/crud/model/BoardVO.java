@@ -19,8 +19,8 @@ private String content;
 //작가
 private String writer;
 //날짜
-private Date regdate;
+private String regdate;
 // 수정 날짜
-private Date updatedate;
+private String updatedate;
 
 }

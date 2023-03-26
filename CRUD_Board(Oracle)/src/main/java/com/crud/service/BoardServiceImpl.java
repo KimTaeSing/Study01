@@ -30,6 +30,17 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.getPage(bno);
 	}
 
+	@Override
+	public void delBoard(int bno) {
+		mapper.delBoard(bno);
+	}
+
+	@Override
+	public List<BoardVO> updatePage(int bno) {
+		return mapper.updatePage(bno);
+	}
+
+
 
 
 }

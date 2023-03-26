@@ -55,13 +55,17 @@ textarea{
 	padding-left : 80px;
 	margin-top : 50px;
 }
+
+#div_update {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
 	<h1>뷰 페이지 입니다</h1>
 
 	<div class="input_wrap">
-		<label>게시판 번호</label> <input readonly value='<c:out value="${getInfo.bno }"/>'/>
+		<label>게시판 번호</label> <input readonly id="div_bno" value='<c:out value="${getInfo.bno }"/>'/>
 	</div>
 
 	<div class="input_wrap">
@@ -85,6 +89,10 @@ textarea{
 	</div>
 	
 	<a class="input_wrap" href="/board/list">게시판 목록으로</a>
-	<a class="input_wrap" href="/board/updatePage">게시판 수정 페이지</a>
+	<a class="input_wrap" href='/board/updatePage?bno=<c:out value="${getInfo.bno}"/>'>게시판 수정 페이지</a>
 </body>
 </html>
+<script type="text/javascript">
+
+
+</script>

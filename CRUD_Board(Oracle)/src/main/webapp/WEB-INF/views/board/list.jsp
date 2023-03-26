@@ -92,7 +92,7 @@
 $(document).ready(function(){
 	
 	let result = '<c:out value="${result}"/>';
-	
+	console.log("result : " + result);
 	checkAlert(result);
 	
 	function checkAlert(result){
@@ -103,6 +103,10 @@ $(document).ready(function(){
 		
 		if(result === "success"){
 			alert("등록이 완료되었습니다.");
+		}
+		
+		if(result === "del_success"){
+			alert("삭제가 완료 되었습니다.");
 		}
 		
 	}	
