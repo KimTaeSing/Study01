@@ -67,44 +67,49 @@ textarea {
 </head>
 <body>
 	<h1>수정 페이지 입니다</h1>
-	<div class="input_wrap">
-		<label>게시판 번호</label> <input name="input_bno" id="input_bno">
-	</div>
+	<form action="/board/update" method="post" id="updateForm"
+		name="updateForm">
+		<div class="input_wrap">
+			<label>게시판 번호</label> <input name="bno" id="bno" readonly>
+		</div>
 
-	<div class="input_wrap">
-		<label>게시판 제목</label> <input name="input_title" id="input_title">
-	</div>
+		<div class="input_wrap">
+			<label>게시판 제목</label> <input name="title" id="title">
+		</div>
 
-	<div class="input_wrap">
-		<label>게시판 내용</label>
-		<textarea rows="3" cols="" name="" id="input_content"></textarea>
-	</div>
+		<div class="input_wrap">
+			<label>게시판 내용</label>
+			<textarea rows="3" cols="" name="content" id="content"></textarea>
+		</div>
 
-	<div class="input_wrap">
-		<label>게시판 작성자</label> <input name="input_writer" id="input_writer">
-	</div>
+		<div class="input_wrap">
+			<label>게시판 작성자</label> <input name="writer" id="writer">
+		</div>
 
-	<div class="input_wrap">
-		<label>게시판 등록일</label> <input name="input_regdate" id="input_regdate">
-	</div>
+		<div class="input_wrap">
+			<label>게시판 등록일</label> <input name="regdate" id="regdate">
+		</div>
 
-	<div class="input_wrap">
-		<label>게시판 수정일</label> <input name="input_updatedate" id="input_updatedate">
-	</div>
+		<div class="input_wrap">
+			<label>게시판 수정일</label> <input name="updatedate" id="updatedate">
+		</div>
 
-	<a class="input_wrap" href="/board/list">게시판 목록으로</a>
-	<button onclick="update();">수정</button>
-	<button onclick="del_board();">삭제</button>
+		<a class="input_wrap" href="/board/list">게시판 목록으로</a>
+		<button>수정</button>
+	</form>
+	<form action="/board/del_board" method="post">
+		<input type="hidden" id="bno1" name="bno1">
+		<button>삭제</button>
+	</form>
 </body>
 </html>
 <script type="text/javascript">
+	//	주소창 파라미터 값 가져오는 함수.
+	const urlParams = new URL(location.href).searchParams;
+	const bno = urlParams.get('bno');
 
-//	주소창 파라미터 값 가져오는 함수.
-const urlParams = new URL(location.href).searchParams;
-const bno = urlParams.get('bno');
-
-// 수정 페이지 해당 게시판 데이터 가져오는 함수 (AJax 통신)
-	$(function(result){
+	// 수정 페이지 해당 게시판 데이터 가져오는 함수 (AJax 통신)
+	$(function(result) {
 		console.log("bno : " + bno);
 		$.ajax({
 			type : "post",
@@ -117,33 +122,26 @@ const bno = urlParams.get('bno');
 				let b_result = result.list[0];
 				// each문으로 반복문 돌리고 key,value 값 추출 해 해당 key값에 맞는 value 값을 넣었음 !
 				$.each(b_result, function(key, value) {
-					$("#input_"+key).val(value);
-					
+					$("#" + key).val(value);
+
 				});
+				
+				$("#bno1").val(result.list[0].bno);
 			}
 		});
-		
-	});
-	
-// 게시글 삭제 버튼 함수z	
-function del_board(){
-	$.ajax({
-		type : "post",
-		url : "/board/del_board",
-		dataType : "json",
-		data : {
-			"bno" : bno
-		},
-		success : function(result) {
-			
-		}
-	});
-}
-	
 
-// 게시글 업데이트 버튼 함수
-	function update() {
-		let bno = $("#hidden_bno").val();
-		alert(bno);
+	});
+
+	// 게시글 삭제 버튼 함수z	
+	function del_board() {
+		$.ajax({
+			type : "post",
+			url : "/board/del_board",
+			data : {
+				"bno" : bno
+			}
+		});
 	}
+
+	// 게시글 업데이트 버튼 함수
 </script>

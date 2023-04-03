@@ -26,4 +26,9 @@
  		delete from crud_board where bno = #{bno}
  	</delete>
  	
+ 	<update id="update">
+ 		update crud_board set title = #{title}, content = #{content}, writer = #{writer}, updatedate = sysdate where bno = #{bno}
+ 	</update>
+ 	
+ 	
   </mapper>

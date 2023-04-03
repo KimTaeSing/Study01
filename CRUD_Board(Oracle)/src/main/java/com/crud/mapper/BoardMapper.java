@@ -18,6 +18,7 @@ public interface BoardMapper {
 //	게시글 삭제
 	public void delBoard(int bno);
 	
-	
+// 	게시판 수정
+	public int update(BoardVO board);
 	
 }

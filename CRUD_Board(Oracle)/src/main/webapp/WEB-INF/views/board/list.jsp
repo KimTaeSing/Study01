@@ -109,6 +109,10 @@ $(document).ready(function(){
 			alert("삭제가 완료 되었습니다.");
 		}
 		
+		if(result === "update") {
+			alert("수정이 완료 되었습니다.");
+		}
+		
 	}	
 	
 });

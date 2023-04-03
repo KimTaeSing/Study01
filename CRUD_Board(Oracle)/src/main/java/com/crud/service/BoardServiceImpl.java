@@ -40,6 +40,13 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.updatePage(bno);
 	}
 
+	@Override
+	public int update(BoardVO board) {
+		// TODO Auto-generated method stub
+		return mapper.update(board);
+	}
+
+
 
 
 

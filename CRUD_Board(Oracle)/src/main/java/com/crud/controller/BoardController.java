@@ -64,7 +64,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/del_board")
-	public String del_board(@RequestParam("bno") int bno, RedirectAttributes rttr) {
+	public String del_board(@RequestParam("bno1") int bno, RedirectAttributes rttr) {
 		log.info("게시글 삭제 컨트롤러 진입");
 		log.info("bno 확인 : "+ bno);
 		bservice.delBoard(bno);
@@ -86,6 +86,15 @@ public class BoardController {
 		// 사용자가 등록을 완료했다는 피드백을 알려주기 위해 RedirectAttributes 메소드를 시용 하였음 !
 		rttr.addFlashAttribute("result", "success");
 
+		return "redirect:/board/list";
+	}
+	
+	// 수정 컨트롤러
+	@PostMapping("/update")
+	public String boardupdatePOST(BoardVO board, RedirectAttributes rttr) {
+		System.out.println("test : " + board);
+			bservice.update(board);
+			rttr.addFlashAttribute("result", "update");
 		return "redirect:/board/list";
 	}
 
